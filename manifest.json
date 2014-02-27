@@ -1,0 +1,26 @@
+{
+  "AppDescription": {
+    "en": "Instead of pressing next song, say instead yes or no"
+  },
+
+  "AppName": {
+    "en": "Music visualization"
+  },
+  "BundleIdentifier": "visualization-app",
+  "BundleType": "Application",
+  "BundleVersion": "0.0.1",
+  "Dependencies": {
+    "api": "1.0.0",
+    "views": "1.10.0"
+  },
+  
+   "RequiredPermissions": [
+  ],
+  
+  "SupportedDeviceClasses": [
+    "Desktop"
+  ],
+  "SupportedLanguages": [
+    "en"
+  ]
+}

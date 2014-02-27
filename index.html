@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<title>Music visualization</title>
+	</head>
+
+	<body>
+				<table>
+			<tr>
+				<th>
+					<div id="1"></div>
+				</th>
+				<th>
+					<div id="2"></div>
+				</th>
+				<th>
+					<div id="3"></div>
+				</th>
+				<th>
+					<div id="4"></div>
+				</th>
+				<th>
+					<div id="5"></div>
+				</th>
+				<th>
+					<div id="6"></div>
+				</th>
+				<th>
+					<div id="7"></div>
+				</th>
+				<th>
+					<div id="8"></div>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<div id="9"></div>
+				</th>
+				<th>
+					<div id="10"></div>
+				</th>
+				<th>
+					<div id="11"></div>
+				</th>
+				<th>
+					<div id="12"></div>
+				</th>
+				<th>
+					<div id="13"></div>
+				</th>
+				<th>
+					<div id="14"></div>
+				</th>
+				<th>
+					<div id="15"></div>
+				</th>
+				<th>
+					<div id="16"></div>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<div id="17"></div>
+				</th>
+				<th>
+					<div id="18"></div>
+				</th>
+				<th>
+					<div id="19"></div>
+				</th>
+				<th>
+					<div id="20"></div>
+				</th>
+				<th>
+					<div id="21"></div>
+				</th>
+				<th>
+					<div id="22"></div>
+				</th>
+				<th>
+					<div id="23"></div>
+				</th>
+				<th>
+					<div id="24"></div>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<div id="25"></div>
+				</th>
+				<th>
+					<div id="26"></div>
+				</th>
+				<th>
+					<div id="27"></div>
+				</th>
+				<th>
+					<div id="28"></div>
+				</th>
+				<th>
+					<div id="29"></div>
+				</th>
+				<th>
+					<div id="30"></div>
+				</th>
+				<th>
+					<div id="31"></div>
+				</th>
+				<th>
+					<div id="32"></div>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<div id="33"></div>
+				</th>
+				<th>
+					<div id="34"></div>
+				</th>
+				<th>
+					<div id="35"></div>
+				</th>
+				<th>
+					<div id="36"></div>
+				</th>
+				<th>
+					<div id="37"></div>
+				</th>
+				<th>
+					<div id="38"></div>
+				</th>
+				<th>
+					<div id="39"></div>
+				</th>
+				<th>
+					<div id="40"></div>
+				</th>
+			</tr>
+		</table>
+		
+		<script>
+			rows = [];
+			
+			for (var i = 1; i <= 40; i++) {
+				var row = i.toString();
+				rows[i] = document.getElementById(row);
+			}
+			
+
+			require(['$api/audio', '$api/models'], function(audio, models) {
+			  var analyzer = audio.RealtimeAnalyzer.forPlayer(models.player);
+
+			  analyzer.addEventListener('audio', function(evt) {
+			    for (var i = 1; i<=40; i++) {
+				  var output = evt.audio.wave.left[i];
+				  r = Math.floor(output*400);
+				  g = Math.floor(output*400);
+				  b = Math.floor(output*400);
+				  //rows[i].style.height = output * 256 + "px";
+				  rows[i].style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+				  //var output2 = evt.audio.wave.right[i];
+				  //rows[i+1].style.height = output2 * 256 + "px";
+
+
+			    }
+			  });
+			});
+		</script>
+	</body>
+
+</html>
